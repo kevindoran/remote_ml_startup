@@ -1,0 +1,12 @@
+settings {
+    nodaemon = true, -- Run in foreground.
+}
+sync {
+    default.rsyncssh,
+    source="/home/john/some/project/folder/",   -- full path to local project
+    host="m1.us-central1-f.my_gcloud_project",  -- some remote host
+    targetdir="/home/john/some/remote/folder/", -- full path to a host folder 
+    delay=2, -- seconds to wait while aggregating. Default is 15.
+    exclude={"~", "env", ".git", ".*.swp", ".*~", "out", "data"}, 
+    delete='startup' -- Lsyncd will delete files on target when starting (if needed to keep target folder in sync with source).
+}

@@ -1,0 +1,19 @@
+FROM pytorch/pytorch
+
+ARG USER_ID=1001
+ARG GROUP_ID=101
+RUN addgroup -gid $GROUP_ID app
+RUN adduser --disabled-password --gecos '' --uid $USER_ID --gid $GROUP_ID app
+WORKDIR /app
+
+RUN conda config --add channels conda-forge && \
+	conda install --yes \
+	matplotlib \
+	pandas \
+	scikit-learn \
+	jupyterlab && \
+	conda clean -ya
+
+COPY --chown=$USER_ID ./ ./
+
+USER app
