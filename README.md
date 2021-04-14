@@ -12,11 +12,11 @@ Install the following  on the remote machine:
 
 # Workflow
 An example workflow might be:
-1. Start lsyncd to sync local files to the remote, `./start_lysncd`.
+1. Start lsyncd to sync local files to the remote, `lsyncd ./scripts/lysncd_config`.
 2. Do some work on local.
 3. ssh into remote.
 4. Create new tmux session with `tmux`, or attach to existing session with `tmux a -t 0` (for example).
-5. Run code on remote, for example `./runjupyterlab`.
+5. Run code on remote, for example `./scripts/runjupyterlab`.
 6. From the local machine, commit changes to version control.
 7. Repeat steps 2-6.
 
